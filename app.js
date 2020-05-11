@@ -1,4 +1,6 @@
 let fish = 0
+
+// FIXME all of this should be quantity on the objects
 let newRod = 0
 let luck = 0
 let boat = 0
@@ -7,13 +9,30 @@ let multiplier = 0
 //Catch Fish
 
 function fishing() {
-    fish++
+    let total = 1
+    // FIXME
+    // For each of your click upgrades increase the total
+    total += (clickUpgrades.newRod.multiplier * clickUpgrades.newRod.quantity)
+
+
+
+    fish += total
+    update()
+}
+
+function autoCollect() {
+    let total = 0
+    // FIXME
+    // for each of your auto upgrades increase the total
+
+    fish += total
     update()
 }
 
 function newRodTotal() {
-    newRod++;
+    // FIXME do I have enough fish?
     fish -= clickUpgrades.newRod.price;
+    clickUpgrades.newRod.quantity++;
     clickUpgrades.newRod.price *= 2;
 
     update()
@@ -22,7 +41,7 @@ function newRodTotal() {
 function luckTotal() {
     luck++
     fish -= clickUpgrades.luck.price;
-    fish *= (clickUpgrades.luck.multiplier)
+    // fish *= (clickUpgrades.luck.multiplier)
     clickUpgrades.luck.price *= 2
     update()
 }
@@ -117,3 +136,4 @@ function update() {
 
 
 update()
+setInterval(autoCollect, 1000)
