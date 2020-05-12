@@ -7,3 +7,7 @@
 .fish-bottom {
    background-color: #a76e27
 }
+.img {
+  max-width: 100%;
+  height: auto;
+}

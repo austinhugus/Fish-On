@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/870e3c44f7.js" crossorigin="anonymous"></script>
     <link href="https://fonts.google.com/specimen/Modak?sidebar.open&selection.family=Modak" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
 </head>
 
 <body>
@@ -21,27 +22,33 @@
             <div class="row">
                 <div class="col-12 text-center mt-2">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Bachforelle_Zeichnung.jpg"
-                        alt="brown trout" onclick="fishing()">
+                        alt="brown trout" class="img" onclick="fishing()">
                     <h1>Fish Caught: <span id="fish-caught"></span></h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="card col card shadow m-3 fish-bottom" style="width: 18rem;">
+            <div class="row justify-content-center">
+                <div class="card col-lg-4  card shadow m-3 fish-bottom" style="width: 18rem;">
                     <div class="card-body">
                         <h2 class="card-title text-center">Upgrade Your Fishing!</h2>
-                        <button id="newRod" class="" onclick="newRodTotal()">New Rod +2</button>
-                        <h5> Rods : <span id="newRodCount"></span></h5>
-                        <button id="luck" class="" onclick="luckTotal()">Luck +5</button>
-                        <h5> How Lucky Are You? :<span id="luckCount"></span></h5>
+                        <button id="newRod" class="" onclick="newRodTotal()">New Rod (+2)</button>
+                        <h5>Clicks: +<span id="rodPrice">0</span></h5>
+                        <h5> Price : <span id="newRodCount"></span></h5>
+                        <button id="luck" class="" onclick="luckTotal()">Luck (+5)</button>
+                        <h5>Clicks: +<span id="luckPrice">0</span></h5>
+                        <h5> Price : <span id="luckCount"></span></h5>
                     </div>
                 </div>
-                <div class="card col card shadow m-3 fish-bottom" style="width: 18rem;">
+                <div class="card col-lg-4  card shadow m-3 fish-bottom" style="width: 18rem;">
                     <div class="card-body">
                         <h2 class="card-title text-center">Events!</h2>
-                        <button id="boat" class="" onclick="boatTotal()">Boat +25</button>
-                        <h5>Boats : <span id="boatCount"></span></h5>
-                        <button id="hatch" class="" onclick="hatchTotal()">Hatch +50</button>
-                        <h5>Hatches : <span id="hatchCount"></span></h5>
+
+
+                        <button id="boat" class="" onclick="boatTotal()">Boat (+25)</button>
+                        <h5>Clicks: +<span id="boatPrice">0</span></h5>
+                        <h5>Price : <span id="boatCount"></span></h5>
+                        <button id="hatch" class="" onclick="hatchTotal()">Hatch (+50)</button>
+                        <h5>Clicks: +<span id="hatchPrice">0</span></h5>
+                        <h5>Price : <span id="hatchCount"></span></h5>
                     </div>
                 </div>
             </div>

@@ -1,66 +1,65 @@
 let fish = 0
-
-// FIXME all of this should be quantity on the objects
-let newRod = 0
-let luck = 0
-let boat = 0
-let hatch = 0
-let multiplier = 0
+let autoMod = 0
+let total = 0
 //Catch Fish
 
 function fishing() {
     let total = 1
-    // FIXME
+
     // For each of your click upgrades increase the total
-    total += (clickUpgrades.newRod.multiplier * clickUpgrades.newRod.quantity)
-
-
+    total += (clickUpgrades.newRod.multiplier * clickUpgrades.newRod.quantity);
+    total += (clickUpgrades.luck.multiplier * clickUpgrades.luck.quantity)
 
     fish += total
     update()
 }
 
 function autoCollect() {
-    let total = 0
-    // FIXME
-    // for each of your auto upgrades increase the total
+    let total = 1
 
-    fish += total
+    autoMod += (automaticUpgrades.boat.multiplier * automaticUpgrades.boat.quantity);
+    autoMod += (automaticUpgrades.hatch.multiplier * automaticUpgrades.hatch.quantity)
+
+    fish += autoMod
+
     update()
 }
 
 function newRodTotal() {
-    // FIXME do I have enough fish?
+
     fish -= clickUpgrades.newRod.price;
     clickUpgrades.newRod.quantity++;
     clickUpgrades.newRod.price *= 2;
+
 
     update()
 }
 
 function luckTotal() {
-    luck++
+
     fish -= clickUpgrades.luck.price;
-    // fish *= (clickUpgrades.luck.multiplier)
-    clickUpgrades.luck.price *= 2
+    clickUpgrades.luck.quantity++;
+    clickUpgrades.luck.price *= 2;
     update()
 }
 
 function boatTotal() {
-    boat++
+
     fish -= automaticUpgrades.boat.price;
-    fish *= (clickUpgrades.boat.price);
-    automaticUpgrades.boat.price *= 2
+    automaticUpgrades.boat.quantity++;
+    automaticUpgrades.boat.price *= 2;
 
     update()
+
 }
 
 function hatchTotal() {
-    hatch++
+
     fish -= automaticUpgrades.hatch.price;
-    fish *= (automaticUpgrades.hatch.price);
-    automaticUpgrades.hatch.price * 2
+    automaticUpgrades.hatch.quantity++;
+    automaticUpgrades.hatch.price *= 2;
     update()
+
 }
 
 
@@ -68,12 +67,12 @@ function hatchTotal() {
 
 let clickUpgrades = {
     newRod: {
-        price: 5,
+        price: 50,
         quantity: 0,
         multiplier: 2
     },
     luck: {
-        price: 100,
+        price: 250,
         quantity: 0,
         multiplier: 5
     }
@@ -82,26 +81,32 @@ let clickUpgrades = {
 //automatic upgrades
 let automaticUpgrades = {
     boat: {
-        price: 250,
+        price: 1250,
         quantity: 0,
         multiplier: 25
     },
     hatch: {
-        price: 500,
+        price: 5000,
         quantity: 0,
         multiplier: 50
     }
 }
 
+
 function update() {
     document.getElementById("fish-caught").innerText = fish.toString();
-    document.getElementById("newRodCount").innerText = newRod.toString();
-    document.getElementById("luckCount").innerText = luck.toString();
-    document.getElementById("boatCount").innerText = boat.toString();
-    document.getElementById("hatchCount").innerText = hatch.toString();
-
-
-
+    document.getElementById("newRodCount").innerText = total.toString();
+    document.getElementById("luckCount").innerText = total.toString();
+    document.getElementById("boatCount").innerText = total.toString();
+    document.getElementById("hatchCount").innerText = total.toString();
+    document.getElementById("newRodCount").innerText = clickUpgrades.newRod.price.toString();
+    document.getElementById("luckCount").innerText = clickUpgrades.luck.price.toString();
+    document.getElementById("boatCount").innerText = automaticUpgrades.boat.price.toString();
+    document.getElementById("hatchCount").innerText = automaticUpgrades.hatch.price.toString();
+    document.getElementById("rodPrice").innerText = clickUpgrades.newRod.quantity * clickUpgrades.newRod.multiplier;
+    document.getElementById("luckPrice").innerText = clickUpgrades.luck.quantity * clickUpgrades.luck.multiplier;
+    document.getElementById("boatPrice").innerText = automaticUpgrades.boat.quantity * automaticUpgrades.boat.multiplier;
+    document.getElementById("hatchPrice").innerText = automaticUpgrades.hatch.quantity * automaticUpgrades.hatch.multiplier;
     //Disable Buttons
     let noNewRod = document.getElementById("newRod")
     let noLuck = document.getElementById("luck")
@@ -128,12 +133,6 @@ function update() {
 }
 
 
-// How buying these updates will affext your gold
-
-
-
-
-
+setInterval(autoCollect, 3000)
 
 update()
-setInterval(autoCollect, 1000)
